@@ -37,7 +37,7 @@ export default function Navbar() {
 
   return (
     <div className="z-40 fixed h-full w-14 bg-[#272727] text-center text-3xl shadow-md">
-      <Link href="/">
+      <Link href="/" passHref>
         <FontAwesomeIcon
           icon={faHouse}
           className="mt-4 text-[#22D3EE] hover:text-[#E879F9]"
@@ -49,7 +49,7 @@ export default function Navbar() {
       <nav>
         <ul className="space-y-8">
           {nav_items.map((item, i) => (
-            <NavItem url={item.url} icon={item.icon} />
+            <NavItem url={item.url} icon={item.icon} key={item.url} />
           ))}
           <br />
           <LoginLogout />

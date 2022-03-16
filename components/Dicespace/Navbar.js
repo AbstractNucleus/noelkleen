@@ -37,7 +37,7 @@ export default function Navbar() {
             <ul className="justify-center flex space-x-16">
                 <FontAwesomeIcon icon={faEnvelope} className="float-right" onClick={() => {setOpen(true)}} />
                 {items.map((item) => (
-                    <NavItem name={item.name} url={item.url} icon={item.icon} />
+                    <NavItem name={item.name} url={item.url} icon={item.icon} key={item.name} />
                 ))}
             </ul>
             <div className="mt-4 mb-8 border border-[#747474]" />

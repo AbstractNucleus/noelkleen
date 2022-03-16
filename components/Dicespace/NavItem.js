@@ -7,7 +7,7 @@ export default function NavItem({ name, url, icon }) {
     const router = useRouter()
     return (
         <li>
-            <Link href={url}>
+            <Link href={url} passHref>
                     <p className={
                         router.pathname == (url)
                             ? "text-[#E879F9] hover:text-[#E879F9] text-lg cursor-default"

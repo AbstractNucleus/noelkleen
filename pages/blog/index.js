@@ -39,6 +39,7 @@ export default function Blog({ initialPosts }) {
             href="/blog/post/[id]"
             as={"/blog/post/" + post.id}
             key={post.id}
+            passHref
           >
             <div className="px-10 pb-10 pt-3 hover:bg-zinc-100">
               <h1 className="text-xl">{post.title}</h1>

@@ -7,7 +7,7 @@ export default function NavItem({ url, icon }) {
 
   return (
     <li key={url}>
-      <Link href={url}>
+      <Link href={url} passHref>
           <FontAwesomeIcon
             icon={icon}
             className={
