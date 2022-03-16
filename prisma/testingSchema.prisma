@@ -1,0 +1,202 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  posts          Post[]
+  campaigns Campaign[]
+  characters Character[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Post {
+  id        String   @id @default(cuid()) @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  published        Boolean?           @default(true)
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  title     String
+  content   String
+}
+
+model Campaign {
+  id        String   @id @default(cuid()) @unique
+  createdAt DateTime @default(now())
+  creatorId String
+  creator User @relation(fields: [creatorId], references: [id])
+  adminIds  Json
+  characterIds Json
+  name String
+  description String
+}
+
+model Character {
+  id        String   @id @default(cuid()) @unique
+  creatorId String
+  creator User @relation(fields: [creatorId], references: [id])
+  abilityScores Json
+  armorClass Json
+  movementSpeed Json
+  initiative Json
+  proficiencyBonus Json
+  savingThrows Json
+  skills Json
+  inventory Inventory[]
+  conditions Json
+  race Json
+  persona Persona[]
+}
+
+model Item {
+  id        String   @id @default(cuid()) @unique
+  name String
+  attacks Json
+  abilityScoreModifiers Json
+  armorClassModifiers Json
+}
+
+model AbilityScoreModifier {
+  name String @unique
+  origin String
+  value Int
+}
+
+model ArmorClassModifier {
+  name String @unique
+  origin String
+  value Int
+}
+
+model MovementSpeedModifier {
+  name String @unique
+  origin String
+  value Int
+}
+
+model InitiativeModifier {
+  name String @unique
+  origin String
+  value Int
+}
+
+model ProficiencyBonusModifier {
+  name String @unique
+  origin String
+  value Int
+}
+
+model SavingThrows {
+  name String @unique
+  origin String
+  value Int
+}
+
+model Skill {
+  name String @unique
+  proficiencyBonusModifiers Json
+  abilityScoreModifiers Json
+  total Int
+}
+
+
+model Race {
+  name String @unique
+  abilityScoreModifiers Json
+  proficiencies Json
+  features Json
+}
+
+model Class {
+  name String @unique
+
+}
+
+model Feature {
+  name String @unique
+}
+
+model Attack {
+  name String @unique
+  damgage Int
+}
+
+model Proficiency {
+  name String @unique
+}
+
+model Inventory {
+  playerId String @unique
+  player Character @relation(fields: [playerId], references: [id])
+  netWorth Int
+  weight Int
+  items Json
+  coinPouch Json
+}
+
+model Container {
+  id String   @id @default(cuid()) @unique
+  name String
+  items Json
+  netWorth Int
+}
+
+
+model Persona {
+  characterId String @unique
+  character Character @relation(fields: [characterId], references: [id])
+  bonds String
+  description String
+  personalityTraits String
+  ideals String
+  image String
+  flaws String
+  background String
+  languages String
+}
