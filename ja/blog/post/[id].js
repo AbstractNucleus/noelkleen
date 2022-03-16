@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+
 /** @param {import('next').InferGetStaticPropsType<typeof getStaticProps> } props */
 export default function Post({ post }) {
   return (
@@ -30,7 +31,7 @@ export async function getStaticPaths() {
   const paths = posts.map((post) => ({
     params: { id: post.id },
   }));
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params }) {

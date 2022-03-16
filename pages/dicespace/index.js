@@ -75,7 +75,13 @@ export async function getServerSideProps(context) {
             },
         }
     }
-    return {props: {null: null}}
+    return {props: 
+        {
+            campaigns: null,
+            session: null,
+            characters: null
+
+        }}
   }
 
 Dicespace.auth = true
