@@ -3,7 +3,6 @@ import TestModal from "../../components/Dicespace/TestModal"
 
 export default function Testing() {
   const [count, setCount] = useState(0);
-  const data = fetch("/api/testing_forms");
 
   return (
     <>
@@ -14,7 +13,6 @@ export default function Testing() {
             </div>
       </a>
       <TestModal />
-      <h2> {data.first} </h2>
       <form action="/api/testing_forms" method="post">
         <input
           className="bg-zinc-300"
