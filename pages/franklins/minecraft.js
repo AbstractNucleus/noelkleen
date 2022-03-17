@@ -1,8 +1,3 @@
 export default function Minecraft() {
-    return (
-      <>
-      hej
-      </>
-    );
-  }
-  
+    return <>hej</>
+}

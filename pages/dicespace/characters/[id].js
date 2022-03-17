@@ -1,5 +1,4 @@
-import Navbar from "../../../components/Dicespace/Navbar";
-
+import Navbar from "../../../components/Dicespace/Navbar"
 
 export default function Character() {
     return (
