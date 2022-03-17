@@ -4,8 +4,5 @@ module.exports = {
       center: true,
     },
   },
-  content: ["./pages/**/*.{js,jsx}", "./components/**/*.{js,jsx}"],
-  plugins: [
-    require('flowbite/plugin')
-  ],
+  content: ["./pages/**/*.{js,jsx}", "./components/**/*.{js,jsx}"]
 };
