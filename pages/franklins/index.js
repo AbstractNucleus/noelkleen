@@ -1,7 +1,3 @@
 export default function Home() {
-  return (
-    <>
-    hej
-    </>
-  );
+    return <>hej</>
 }
