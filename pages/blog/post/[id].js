@@ -4,25 +4,27 @@ const prisma = new PrismaClient();
 
 
 export default function Post({ post }) {
-  return (
-    <>
-      <textarea
-        className="h-14 w-full resize-none bg-zinc-100 p-3 text-xl"
-        defaultValue={post.title}
-      />
-      <div className="h-screen">
+  if (post){
+    return (
+      <>
         <textarea
-          className="h-1/2 w-full resize-none bg-zinc-100 p-3 hover:resize-y"
-          defaultValue={post.content}
+          className="h-14 w-full resize-none bg-zinc-100 p-3 text-xl"
+          defaultValue={post.title}
         />
-      </div>
-      <div className="w-full">
-        <p className="float-left text-zinc-400">{post.createdAt}</p>
-        <p className="float-right text-zinc-400">{post.author.name}</p>
-      </div>
+        <div className="h-screen">
+          <textarea
+            className="h-1/2 w-full resize-none bg-zinc-100 p-3 hover:resize-y"
+            defaultValue={post.content}
+          />
+        </div>
+        <div className="w-full">
+          <p className="float-left text-zinc-400">{post.createdAt}</p>
+          <p className="float-right text-zinc-400">{post.author.name}</p>
+        </div>
 
-    </>
-  );
+      </>
+    )
+  } return (<>This post does not exist</>)
 }
 
 export async function getStaticPaths() {
@@ -34,11 +36,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  let post = await prisma.post.findMany({ where: { id: params.id } });
-  let author_obj = await prisma.user.findMany({
+  var post = await prisma.post.findMany({ where: { id: params.id } });
+  const author_obj = await prisma.user.findMany({
     where: { id: post[0].authorId },
   });
-  let author = { author: author_obj[0] };
+  const author = { author: author_obj[0] };
   post = Object.assign(post[0], author);
   post.createdAt = post.createdAt.toDateString();
   post.updatedAt = post.updatedAt.toDateString();
