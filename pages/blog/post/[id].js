@@ -3,7 +3,6 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 
-/** @param {import('next').InferGetStaticPropsType<typeof getStaticProps> } props */
 export default function Post({ post }) {
   return (
     <>

@@ -27,7 +27,6 @@ export async function getStaticProps() {
   };
 }
 
-/** @param {import('next').InferGetStaticPropsType<typeof getStaticProps> } props */
 export default function Blog({ initialPosts }) {
   const [posts, setPosts] = useState(initialPosts);
   return (

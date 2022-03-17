@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 
 
 
-/** @param {import('next').InferGetServerSidePropsType<typeof getServerSideProps> } props */
 export default function Dicespace({campaigns, characters}) {
 
       return (
