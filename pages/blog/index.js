@@ -1,9 +1,8 @@
 import Link from "next/link"
-import { PrismaClient } from "@prisma/client"
+import prisma from "../../lib/prisma"
 import { useState } from "react"
 
 export async function getStaticProps() {
-    const prisma = new PrismaClient()
 
     const posts = await prisma.post.findMany()
     const posts_with_author = []

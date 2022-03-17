@@ -1,17 +1,8 @@
-import { PrismaClient } from "@prisma/client";
-import { useRouter } from "next/router";
-
-const prisma = new PrismaClient()
+import prisma from "../../../lib/prisma"
 
 
-export default function createCampaign(req, res){
-    
-    createIns(req)
-    res.json({"s":"l"})
 
-}
-
-export async function createIns(req){
+export default async function createCampaign(req, res){
     const create = await prisma.campaign.create({
         data: {
             creatorId: "kjh23klj4h23kj4h23l",
@@ -21,5 +12,12 @@ export async function createIns(req){
             characterIds: []
         },
     })
-    console.log(create)
+
+
+    res.json({"s":"l"})
+
+}
+
+export async function createIns(req){
+    
 }

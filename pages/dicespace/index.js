@@ -2,8 +2,7 @@ import Navbar from "../../components/Dicespace/Navbar"
 import { getSession, useSession } from "next-auth/react"
 import CharacterOverview from "../../components/Dicespace/CharacterOverview"
 import CampaignOverview from "../../components/Dicespace/CampaignOverview"
-import { PrismaClient } from "@prisma/client"
-import { useRouter } from "next/router"
+import prisma from "../../lib/prisma"
 
 export default function Dicespace({ campaigns, characters }) {
     return (
@@ -25,7 +24,6 @@ export async function getServerSideProps(context) {
     const session = await getSession(context)
     if (session) {
         const user = session.user
-        const prisma = new PrismaClient()
 
         // Get campaigns for overview
         var campaigns = await prisma.campaign.findMany({
