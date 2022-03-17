@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/router";
-import createCampaign from "../../api/dicespace/createCampaign";
 
 
 
