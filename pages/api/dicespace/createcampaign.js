@@ -1,23 +1,17 @@
 import prisma from "../../../lib/prisma"
-
+import { getSession } from 'next-auth/react';
 
 
 export default async function createCampaign(req, res){
+    const session = await getSession({ req })
     const create = await prisma.campaign.create({
         data: {
-            creatorId: "kjh23klj4h23kj4h23l",
-            name: "req.body.name",
-            description: "req.body.description",
+            creatorId: session.user.id,
+            name: req.body.name,
+            description: req.body.description,
             adminIds: [],
             characterIds: []
         },
     })
-
-
-    res.json({"s":"l"})
-
-}
-
-export async function createIns(req){
-    
+    res.redirect(301, "/dicespace/campaigns/"+create.id)
 }

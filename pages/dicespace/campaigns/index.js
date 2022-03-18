@@ -1,28 +1,28 @@
 import Navbar from "../../../components/Dicespace/Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { useSession } from "next-auth/react"
-import { useRouter } from "next/router";
-
 
 
 
 export default function Campaigns() {
-    const router = useRouter()
-    const { data: session, status } = useSession()
 
     return (
         <>
             <Navbar />
             <form action="/api/dicespace/createcampaign" method="post">
-            <input placeholder="name" name="name" id="name" type="text" required />
-            <input placeholder="description" name="description" id="description" type="text" required />
-            <input className="hidden" name="session" id="session" value={session.user.id} />
-            <div className="float-right h-10 w-10 bg-[#272727] text-[#22D3EE]">
-                <button className="left-0 right-0 top-0 bottom-0 h-full w-full" type="submit">
-                    <FontAwesomeIcon icon={faPlus} className="h-full w-full" />
-                </button>
-            </div>
+                <div className="flex-col w-5/12 space-y-4">
+                    <div>
+                        <label htmlFor="name">Name of campaign</label><br />
+                        <input className="w-1/2 h-8 p-5 bg-[#4d4d4d]" placeholder="name" name="name" id="name" type="text" required />
+                    </div>
+                    <div>
+                        <label htmlFor="description">Campaign description</label><br />
+                        <textarea className="w-full h-50 p-5 bg-[#4d4d4d]" placeholder="description" name="description" id="description" type="text" required />
+                    </div>
+                    <button className="bg-[#272727] text-[#22D3EE] w-full py-2" type="submit">
+                        <FontAwesomeIcon icon={faPlus} />
+                    </button>
+                </div>
             </form>
         </>
     );
