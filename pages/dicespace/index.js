@@ -1,5 +1,5 @@
 import Navbar from "../../components/Dicespace/Navbar"
-import { getSession, useSession } from "next-auth/react"
+import { getSession } from "next-auth/react"
 import CharacterOverview from "../../components/Dicespace/CharacterOverview"
 import CampaignOverview from "../../components/Dicespace/CampaignOverview"
 import prisma from "../../lib/prisma"

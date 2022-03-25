@@ -5,6 +5,9 @@ export default function Campaign() {
     return (
         <>
             <Navbar />
+            <div className="flex">
+                
+            </div>
         </>
     )
 }

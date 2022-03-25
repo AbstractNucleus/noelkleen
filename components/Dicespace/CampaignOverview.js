@@ -1,9 +1,11 @@
 import Link from "next/link"
 
+
+
 export default function CampaignOverview({ campaigns }) {
     return (
         <>
-            <div className="min-w-1/3 container w-2/3 cursor-default shadow-lg lg:w-1/3">
+            <div className="min-w-1/3 container w-2/3 cursor-default lg:w-1/3">
                 <div className="rounded-t-lg bg-[#272727] px-5 py-1 text-xl text-[#BEF264]">
                     <Link href="/dicespace/campaigns">Campaigns</Link>
                 </div>
@@ -14,7 +16,7 @@ export default function CampaignOverview({ campaigns }) {
                             key={campaign.id}
                             passHref
                         >
-                            <div className="flex-col space-y-1 py-1 text-zinc-400 hover:bg-[#353535]">
+                            <div className="flex-col h-24 space-y-1 py-1 text-zinc-400 hover:bg-[#353535]">
                                 <p className="text-xl text-zinc-200">
                                     {campaign.name}
                                     <p className="float-right text-base">
