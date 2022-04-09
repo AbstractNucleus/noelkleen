@@ -1,5 +1,6 @@
 export default function Home() {
     return (
+<<<<<<< HEAD
         <>
             <div id="glowscript" class="glowscript">
                 <link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
@@ -517,5 +518,8 @@ export default function Home() {
 
             </div>
         </>
+=======
+        <></>
+>>>>>>> 39e472dc79e11b2df66b09b94c709f714a845c6f
     )
 }
