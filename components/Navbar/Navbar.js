@@ -18,10 +18,6 @@ export default function Navbar() {
             icon: faDiceD20,
         },
         {
-            url: "/franklins",
-            icon: faIcons,
-        },
-        {
             url: "/gritcraft",
             icon: faChessRook,
         },

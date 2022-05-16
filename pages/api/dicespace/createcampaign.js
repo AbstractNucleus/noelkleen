@@ -13,5 +13,5 @@ export default async function createCampaign(req, res){
             characterIds: []
         },
     })
-    res.redirect(301, "/dicespace/campaigns/"+create.id)
+    res.redirect("/dicespace/campaigns/"+create.id)
 }
